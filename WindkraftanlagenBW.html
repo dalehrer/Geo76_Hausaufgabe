@@ -15,7 +15,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 
-<script src="https://unpkg.com/geotiff@1.0.0-beta.6/dist/geotiff.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/geotiff@0.4.1/dist/geotiff.min.js"></script>
 
 <script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
 
@@ -72,7 +72,7 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
         clampHigh: true,    // Werte über Max werden wie Max gefärbt
     }),
     // Hier fügen wir die Quelle (Attribution) hinzu, wie du es wolltest:
-    attribution: '<b>Karte:</b> <a href="https://udo.lubw.baden-wuerttemberg.de/projekte/navigatorurl/show?globalId=energie_windatlas.energie%3A%24SYSTEM%7BUDO_GEODOWNLOAD_URL%7Denergie%2FWindatlasBW.html">Windatlas BW</a>. Daten: LUBW'
+    attribution: '<b>Karte:</b> <a href="https://udo.lubw.baden-wuerttemberg.de/projekte/navigatorurl/show?globalId=energie_windatlas.energie%3A%24SYSTEM%7BUDO_GEODOWNLOAD_URL%7Denergie%2FWindatlasBW.html">Windatlas BW - Resampled</a>. Daten: LUBW'
 }).addTo(mymap);
 
  // basemap 3: ESRI Satellitenbild
