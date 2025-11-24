@@ -26,6 +26,15 @@
 	 padding: 0;
 	 margin: 0;
   }
+  .source-box {
+    background: #ffffff;         /* komplett weiß */
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #999999;  /* grauer Rahmen */
+    font-size: 12px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
  </style>	
 </head>
 <body>
@@ -74,10 +83,11 @@
    
   // Add popup function
   function popUpFunction(feature, layer) {
-   var popupContent =  "<b>Standort: </b>"+feature.properties.STANDORTGE+
-   "<b>Hersteller: </b>"+feature.properties.HERSTELLER+
+   var popupContent =  
+   "<br><b>Standort: </b>"+feature.properties.STANDORTGE+
+   "<br><b>Hersteller: </b>"+feature.properties.HERSTELLER+
    "<br><b>Status: </b>"+ feature.properties.STATUS+
-   "<br><b>Generatorleistung: </b>"+ feature.properties.GENERATORL;
+   "<br><b>Generatorleistung in MW: </b>"+ feature.properties.GENERATORL;
    layer.bindPopup(popupContent);
   }
   
@@ -108,8 +118,17 @@
 	label: "Distance"
    }
   };
-
   var ruler = L.control.ruler(options).addTo(mymap);
+
+var sourceControl = L.control({position: 'bottomright'});
+
+sourceControl.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'source-box');
+    div.innerHTML = '<b>Grundlage:</b> <a href="https://rips-metadaten.lubw.de/trefferanzeige?docuuid=4e14418d-2d74-4349-ba4e-7118060931c8" target="_blank">Daten aus dem Umweltinformationssystem (UIS) der LUBW</a>';
+    return div;
+};
+
+sourceControl.addTo(mymap);
 
  </script>
 
