@@ -1,4 +1,4 @@
-{
+var windkraft = {
 "type": "FeatureCollection",
 "name": "windkraft",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
@@ -988,4 +988,4 @@
 { "type": "Feature", "properties": { "ZUST_NDIGE": "Landratsamt Ortenaukreis", "STANDORTGE": "Durbach", "HERSTELLER": "Enercon", "TYPBEZEICH": "E-172", "GENERATORL": 7.2, "NABENH_HE_": 175.0, "ROTORDURCH": 172.0, "STATUS": "genehmigt, noch nicht in Betrieb", "INBETRIEBN": null, "STILLLEGED": null, "OST": 430303, "NORD": 5370891, "HERKUNFT_D": "LUBW", "STAND_DER_": "2025" }, "geometry": { "type": "Point", "coordinates": [ 8.056745663554018, 48.487277348903589 ] } },
 { "type": "Feature", "properties": { "ZUST_NDIGE": "Landratsamt Ortenaukreis", "STANDORTGE": "Oberkirch", "HERSTELLER": "Enercon", "TYPBEZEICH": "E-172", "GENERATORL": 7.2, "NABENH_HE_": 175.0, "ROTORDURCH": 172.0, "STATUS": "genehmigt, noch nicht in Betrieb", "INBETRIEBN": null, "STILLLEGED": null, "OST": 430668, "NORD": 5370614, "HERKUNFT_D": "LUBW", "STAND_DER_": "2025" }, "geometry": { "type": "Point", "coordinates": [ 8.0617307181728, 48.484826046469713 ] } }
 ]
-}
+};
