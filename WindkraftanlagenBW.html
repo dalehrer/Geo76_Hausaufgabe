@@ -127,7 +127,6 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend');
     
-    // ... dein Styling Code (padding, background etc.) ...
     div.style.backgroundColor = "white"; 
     div.style.padding = "10px";
     div.style.borderRadius = "5px";
@@ -135,7 +134,6 @@ legend.onAdd = function (map) {
     div.innerHTML = `
         <strong>Windgeschwindigkeit (m/s)</strong><br>
         <div style="
-            /* Das ist der entscheidende Teil für Magma: */
             background: linear-gradient(to right, #000004, #3b0f70, #8c2981, #de4968, #fe9f6d, #fcfdbf);
             width: 150px; 
             height: 15px; 
