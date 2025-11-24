@@ -11,17 +11,11 @@
  <!-- set the title shown in the browser tab -->
  <title>Windkraftanlagen Deutschlands</title>
  <!-- Links to the leaflet CSS and JS -->
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-   crossorigin=""/>
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
  <!-- Links to the Leaflet-Ruler Plugin -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css" 
-  integrity= "sha384-P9DABSdtEY/XDbEInD3q+PlL+BjqPCXGcF8EkhtKSfSTr/dS5PBKa9+/PMkW2xsY" crossorigin="anonymous">  
- <script src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js"
-  integrity="sha384-N2S8y7hRzXUPiepaSiUvBH1ZZ7Tc/ZfchhbPdvOE5v3aBBCIepq9l+dBJPFdo1ZJ" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css" />  
+ <script src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js"></script>
  <!-- External data  --> 
  <script src="windkraft.js"></script>
  <!-- styles for elements html and body: fullscreen  -->
@@ -59,7 +53,7 @@
   var osmint_basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(mymap);
+  });
 
   // Basemap dictonary
   var basemaps = {
@@ -80,9 +74,10 @@
    
   // Add popup function
   function popUpFunction(feature, layer) {
-   var popupContent = "<b>Name: </b>"+feature.properties.NAME+
-   "<br><b>Fläche: </b>"+ feature.properties.FLAECHE+
-   "<br><b>Link: </b>"+ feature.properties.LINK;
+   var popupContent =  "<b>Standort: </b>"+feature.properties.STANDORTGE+
+   "<b>Hersteller: </b>"+feature.properties.HERSTELLER+
+   "<br><b>Status: </b>"+ feature.properties.STATUS+
+   "<br><b>Generatorleistung: </b>"+ feature.properties.GENERATORL;
    layer.bindPopup(popupContent);
   }
   
