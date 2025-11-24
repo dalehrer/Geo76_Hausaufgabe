@@ -45,7 +45,7 @@
  <script>
 
   // Create Leaflet map
-  var mymap = L.map('mapid').setView([51.5, 11.5], 6);
+  var mymap = L.map('mapid').setView([48.5784, 9.0562], 8.5);
 
   // Add basemaps
   // basemap 1:
@@ -71,21 +71,12 @@
    "Open Street Map INT": osmint_basemap
   };
   
-  // Add earthquake markers
-   // Add earthquake markers
-  //var orangeMarker = {
-  // radius: 8,
-   //fillColor: "#ff7800",
-  // color: "#000",
-   // opacity: 1,
-  // fillOpacity: 0.6};
-   
+
    var windradIcon = L.icon({
     iconUrl: 'windmill.png',
 
-    iconSize:     [38, 95], // size of the icon
-    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-    shadowAnchor: [4, 62],  // the same for the shadow
+    iconSize:     [40, 40], // size of the icon
+    iconAnchor:   [15, 25], // point of the icon which will correspond to marker's location
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
    
