@@ -10,9 +10,18 @@
  <meta name="apple-mobile-web-app-capable" content="yes">
  <!-- set the title shown in the browser tab -->
  <title>Windkraftanlagen Deutschlands</title>
+ 
  <!-- Links to the leaflet CSS and JS -->
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/geotiff@1.0.0-beta.6/dist/geotiff.bundle.js"></script>
+
+<script src="https://unpkg.com/plotty@0.2.0/src/plotty.js"></script>
+
+<script src="leaflet-geotiff.js"></script>
+<script src="leaflet-geotiff-plotty.js"></script>
+ 
  <!-- Links to the Leaflet-Ruler Plugin -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css" />  
  <script src="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.js"></script>
@@ -44,21 +53,29 @@
 
  <script>
 
-  // Create Leaflet map
-  var mymap = L.map('mapid').setView([48.5784, 9.0562], 8.5);
+ var mymap = L.map('mapid').setView([48.5784, 9.0562], 8.5);
 
   // Add basemaps
-  // basemap 1:
+  // basemap 1: OpenStreetMap DE
   var osm_basemap = L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
 	  attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(mymap);
 
-  // basemap 2:
-  var otm_basemap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-  attribution: '<b> Karte: </b> <a href="https://udo.lubw.baden-wuerttemberg.de/projekte/navigatorurl/show?globalId=energie_windatlas.energie%3A%24SYSTEM%7BUDO_GEODOWNLOAD_URL%7Denergie%2FWindatlasBW.html"> Windatlas BW</a>. Daten aus dem Umweltinformationssystem (UIS) der LUBW Landesanstalt für Umwelt Baden-Württemberg'
-  });
 
- // basemap 2:
+var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
+    // Der Renderer bestimmt, wie die Daten aussehen (hier: Farben via Plotty)
+    renderer: L.LeafletGeotiff.plotty({
+        displayMin: 0,      // Minimaler Wert für die Farbskala (m/s)
+        displayMax: 10,     // Maximaler Wert für die Farbskala (m/s)
+        colorScale: 'viridis', // Farbschema (z.B. 'viridis', 'magma', 'plasma')
+        clampLow: false,
+        clampHigh: true,    // Werte über Max werden wie Max gefärbt
+    }),
+    // Hier fügen wir die Quelle (Attribution) hinzu, wie du es wolltest:
+    attribution: '<b>Karte:</b> <a href="https://udo.lubw.baden-wuerttemberg.de/projekte/navigatorurl/show?globalId=energie_windatlas.energie%3A%24SYSTEM%7BUDO_GEODOWNLOAD_URL%7Denergie%2FWindatlasBW.html">Windatlas BW</a>. Daten: LUBW'
+}).addTo(mymap);
+
+ // basemap 3: ESRI Satellitenbild
   var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
   });
@@ -67,7 +84,7 @@
   // Basemap dictonary
   var basemaps = {
    "Open Street Map DE": osm_basemap,
-   "Open Topo Map": otm_basemap,
+   "Mean Windspeed 100m": Windspeed,
    "ESRI Satellitenbild": Esri_WorldImagery
   };
   
