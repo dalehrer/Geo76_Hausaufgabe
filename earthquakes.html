@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
  <!-- set the charset -->
@@ -53,6 +53,16 @@
   maxZoom: 19,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
+ 
+  // Basemap dictonary
+  var basemaps = {
+   "Open Street Map DE": osm_basemap,
+   "Open Topo Map": otm_basemap,
+   "Open Street Map INT": osmint_basemap
+  };
+ 
+  // Layer control
+  var legend = L.control.layers(basemaps).addTo(mymap);
  
  </script>
  
