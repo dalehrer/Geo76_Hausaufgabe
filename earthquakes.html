@@ -54,6 +54,8 @@
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(mymap);
  
+ 
+ 
   // Basemap dictonary
   var basemaps = {
    "Open Street Map DE": osm_basemap,
@@ -61,9 +63,13 @@
    "Open Street Map INT": osmint_basemap
   };
  
-  // Layer control
-  var legend = L.control.layers(basemaps).addTo(mymap);
+var overlay_eq_points = L.geoJSON(eq_points).addTo(mymap); 
+  
+var legend = L.control.layers(basemaps).addTo(mymap);
  
+
+var scale = L.control.scale({maxWidth: 150, metric: true, imperial: true}).addTo(mymap);
+  
  </script>
  
 </body>
