@@ -67,7 +67,7 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
     renderer: L.LeafletGeotiff.plotty({
         displayMin: 0,      
         displayMax: 10,     
-        colorScale: 'plasma',
+        colorScale: 'magma',
         clampLow: false,
         clampHigh: true,    
     }),
@@ -95,7 +95,7 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
 
     iconSize:     [40, 40], // size of the icon
     iconAnchor:   [15, 25], // point of the icon which will correspond to marker's location
-    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [6, -35] // point from which the popup should open relative to the iconAnchor
 });
    
   // Add popup function
