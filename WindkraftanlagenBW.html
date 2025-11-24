@@ -67,7 +67,7 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
     renderer: L.LeafletGeotiff.plotty({
         displayMin: 0,      
         displayMax: 10,     
-        colorScale: 'magma',
+        colorScale: 'plasma',
         clampLow: false,
         clampHigh: true,    
     }),
@@ -120,39 +120,11 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
   };
 
   // Layer control
-  var legende = L.control.layers(basemaps,overlays,{collapsed: false}).addTo(mymap);
+  var legend = L.control.layers(basemaps,overlays,{collapsed: false}).addTo(mymap);
   
-  var legend = L.control({position: 'topleft'});
 
-legend.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'info legend');
-    
-    div.style.backgroundColor = "white"; 
-    div.style.padding = "10px";
-    div.style.borderRadius = "5px";
 
-    div.innerHTML = `
-        <strong>Windgeschwindigkeit (m/s)</strong><br>
-        <div style="
-            background: linear-gradient(to right, #000004, #3b0f70, #8c2981, #de4968, #fe9f6d, #fcfdbf);
-            width: 150px; 
-            height: 15px; 
-            margin-top: 5px;
-            margin-bottom: 5px;
-            border: 1px solid #999;">
-        </div>
-        <div style="display: flex; justify-content: space-between; width: 150px; font-size: 10px;">
-            <span>0</span>
-            <span>2.5</span>
-            <span>5</span>
-            <span>7.5</span>
-            <span>10+</span>
-        </div>
-    `;
-    return div;
-};
-
-legende.addTo(mymap);
+legend.addTo(mymap);
   
   
   // Scale
