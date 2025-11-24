@@ -74,7 +74,7 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
   
   
     attribution: '<b>Karte:</b> <a href="https://udo.lubw.baden-wuerttemberg.de/projekte/navigatorurl/show?globalId=energie_windatlas.energie%3A%24SYSTEM%7BUDO_GEODOWNLOAD_URL%7Denergie%2FWindatlasBW.html">Windatlas BW - Resampled</a>. Daten: LUBW'
-}).addTo(mymap);
+});
 
  // basemap 3: ESRI Satellitenbild
   var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -147,7 +147,8 @@ var sourceControl = L.control({position: 'bottomright'});
 sourceControl.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'source-box');
     div.innerHTML = '<b>Grundlage:</b> <a href="https://rips-metadaten.lubw.de/trefferanzeige?docuuid=4e14418d-2d74-4349-ba4e-7118060931c8" target="_blank">Daten aus dem Umweltinformationssystem (UIS) der LUBW</a>'+ 
-	'<br> <b> Windrad Icons: </b> <a hfref= <a href="https://www.flaticon.com/free-icons/wind-turbine"target="_blank"> Wind-turbine icons created by Freepik - Flaticon</a>';
+	'<br> <b> Windrad Icons: </b> <a hfref= <a href="https://www.flaticon.com/free-icons/wind-turbine"target="_blank"> Wind-turbine icons created by Freepik - Flaticon</a>' + 
+	'<br> <b> Autoren: </b>  Niklas Lehr & Ben Schmidt ';
     return div;
 };
 
