@@ -53,6 +53,10 @@
 
  <script>
 
+var Legende = L.control({position: 'bottomright'});
+
+
+
  var mymap = L.map('mapid').setView([48.5784, 9.0562], 8.5);
 
   // Add basemaps
@@ -65,8 +69,8 @@
 
 var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
     renderer: L.LeafletGeotiff.plotty({
-        displayMin: 0,      
-        displayMax: 10,     
+        displayMin: 2.1,      
+        displayMax: 8.3,     
         colorScale: 'magma',
         clampLow: false,
         clampHigh: true,    
@@ -82,6 +86,9 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
   });
 
 
+
+
+
   // Basemap dictonary
   var basemaps = {
    "Open Street Map DE": osm_basemap,
@@ -89,6 +96,20 @@ var Windspeed = L.leafletGeotiff('Baden100_align_meanspeed.tif', {
    "ESRI Satellitenbild": Esri_WorldImagery
   };
   
+Legende.onAdd = function (mymap) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML =
+        '<img src="Legende.png" alt="legend" style="width:300px;height:162px">';
+    return div;
+};
+// Event-Listener für Layer-Wechsel
+mymap.on('baselayerchange', function(e) {
+    if (e.name === 'Mean Windspeed 100m') {
+        Legende.addTo(mymap);
+    } else {
+        mymap.removeControl(Legende);
+    }
+});
 
    var windradIcon = L.icon({
     iconUrl: 'windmill.png',
